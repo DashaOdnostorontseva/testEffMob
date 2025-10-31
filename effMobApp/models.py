@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class CustomUserManager(BaseUserManager):
@@ -25,14 +26,18 @@ class Users(AbstractBaseUser):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'patronymic']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def __str__(self):
         return self.email
 
     def soft_delete(self):
         self.is_active = False
-        self.deleted_at = models.DateTimeField(auto_now_add=True)
+        self.deleted_at = timezone.now()
+        self.save()
+
+    def restore(self):
+        self.is_active = True
         self.save()
 
 class Roles(models.Model):
