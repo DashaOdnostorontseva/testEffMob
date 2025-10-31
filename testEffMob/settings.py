@@ -38,7 +38,30 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'effMobApp',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
+
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/profile/'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_NAME = 'sessionid'
+SESSION_COOKIE_AGE = 3600  # Сессия заканчивается через 1 час
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Сессия сохраняется даже после закрытия браузера
+SESSION_COOKIE_SAMESITE = 'None'  # Настройка SameSite для cookies
+SESSION_COOKIE_SECURE = True
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -84,6 +107,14 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = (
+    'effMobApp.usersAction.authentication.CustomAuthenticationBackend', 
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+AUTH_USER_MODEL = 'effMobApp.Users'
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -119,6 +150,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'effMobApp/static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
