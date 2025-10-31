@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <title>ADMIN</title>
+</head>
+<body>
+    <h1>This page can see only users with "Admin" role</h1>
+    <button id="get-users-data-button" type="submit">Получить данные о пользователях</button>
+    <table id="users-table" border="1" style="margin-top: 20px; border-collapse: collapse;" hidden>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Email</th>
+          <th>Роль</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script src="{% static 'effMobApp/js/api.js' %}"></script>
+    <script src="{% static 'effMobApp/js/scripts.js' %}"></script>
+</body>
+</html>
