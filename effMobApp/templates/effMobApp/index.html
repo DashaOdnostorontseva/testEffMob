@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link href="{% static 'effMobApp/css/index.css' %}" rel="stylesheet">
+  <title>Вход / Регистрация</title>
 </head>
 <body>
-    <h1>Hello</h1>
+  <div id="logreg-forms">
+    <!-- Форма входа -->
+    <form class="form-signin" id="login-form">
+      <h1 class="h3 mb-3 text-center">Войти</h1>
+      <input type="email" class="form-control" id="login-email" placeholder="Email" required autofocus>
+      <input type="password" class="form-control" id="login-password" placeholder="Пароль" required>
+      <button class="btn btn-primary btn-block" type="submit">Войти</button>
+      <hr>
+      <button class="btn btn-secondary btn-block" type="button" id="btn-signup">Создать аккаунт</button>
+    </form>
+
+    <!-- Форма регистрации -->
+    <form class="form-signup" id="signup-form">
+      <h1 class="h3 mb-3 text-center">Регистрация</h1>
+      <input type="text" class="form-control" id="signup-first-name" placeholder="Имя" required autofocus>
+      <input type="text" class="form-control" id="signup-second-name" placeholder="Фамилия" required>
+      <input type="text" class="form-control" id="signup-patronymic" placeholder="Отчество">
+      <input type="email" class="form-control" id="signup-email" placeholder="Email" required>
+      <input type="password" class="form-control" id="signup-password" placeholder="Пароль" required>
+      <input type="password" class="form-control" id="signup-password-repeat" placeholder="Повторите пароль" required>
+      <button class="btn btn-primary btn-block" type="submit">Зарегистрироваться</button>
+      <a href="#" id="cancel_signup">Назад</a>
+    </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'effMobApp/js/index.js' %}"></script>
+  <script src="{% static 'effMobApp/js/scripts.js' %}"></script>
 </body>
 </html>
