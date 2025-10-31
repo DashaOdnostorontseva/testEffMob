@@ -53,16 +53,15 @@ def signup(request):
     is_exist, exist_user = user_is_exist(email)
 
     if ((is_exist) and 
-        (user.is_active)):
+        (exist_user.is_active)):
             return JsonResponse({'status': 'error', 'message': 'User with this email already exists. Please use the login form.'}, status=400)
     
     if ((is_exist) and 
-        (not user.is_active)):          
+        (not exist_user.is_active)):          
             auth_user = authenticate(request, email=email, password=password)
 
             if auth_user:
-                user.is_active = True
-                user.save()
+                exist_user.restore()
                 login(request, auth_user)
                 return JsonResponse({'status': 'success', 'message' : 'Account successfully restored', 'redirect_url': f'/profile/{user.id}/'})
             return JsonResponse({'status': 'error', 'message': 'Incorrect password for existing (inactive) account'})
