@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Внешний API</title>
+  {% load static %}
+</head>
+<body>
+  <h1>Проверка работы внешнего API через JWT</h1>
+
+  <div id="login-section">
+    <h3>Авторизация</h3>
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="password" id="password" placeholder="Пароль"><br>
+    <button id="login-btn">Получить токен</button>
+  </div>
+
+  <div id="api-section" hidden>
+    <button id="load-users">Получить данные о пользователях</button>
+    <table id="users-table" border="1" style="margin-top: 20px; border-collapse: collapse;" hidden>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Email</th>
+          <th>Роль</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="{% static 'effMobApp/js/externalApi.js' %}"></script>
+</body>
+</html>
