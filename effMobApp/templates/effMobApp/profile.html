@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <title>Профиль</title>
+</head>
+<body>
+    <h1>Привет, {{ user.first_name }}!</h1>
+    <p>Фамилия: {{ user.last_name }}, Отчество: {{ user.polynomic }}</p>
+    <p>Электронная почта: {{ user.email }}</p>
+    <button id="admin-button" type="submit">Кнопка для администратора</button>
+    <button id="operator-button" type="submit">Кнопка для оператора</button>
+    <button id="user-button" type="submit">Кнопка для пользователя</button>
+    <button id="edit-profile-button" type="submit">Редактировать профиль</button>
+    <button id="delete-profile-button" type="submit">Удалить профиль</button>
+    <button id="logout-button" type="submit">Выйти</button>
+    <script src="{% static 'effMobApp/js/profile.js' %}"></script>
+    <script src="{% static 'effMobApp/js/scripts.js' %}"></script>
+</body>
+</html>
