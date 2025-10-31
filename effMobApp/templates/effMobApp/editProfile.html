@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <title>Редактирование профиля</title>
+</head>
+<body>
+  <form id="edit-form">
+    <p>Email <input type="text" name = "email" id="upd-email" value = "{{ user.email }}" required></input></p>
+    <p>Имя <input type="text" name = "first_name" id="upd-first-name" value = "{{ user.first_name }}" required></input></p>
+    <p>Фамилия <input type="text" name = "last_name" id="upd-last-name" value = "{{ user.last_name }}" required></input></p>
+    <p>Отчество <input type="text" name = "patronymic" id="upd-patronymic" value = "{{ user.patronymic }}"></input></p>
+    <p>Новый пароль <input type="password" name = "password" id="upd-password" placeholder="Введите новый пароль"></input></p>
+    <p>Новый пароль <input type="password" name = "password" id="upd-repeat-password" placeholder="Введите новый пароль"></input></p>
+    <button id="save-button" type="submit">Сохранить</button>
+  </form>
+
+    <script src="{% static 'effMobApp/js/scripts.js' %}"></script>
+    <script src="{% static 'effMobApp/js/editProfile.js' %}"></script>
+</body>
+</html>
