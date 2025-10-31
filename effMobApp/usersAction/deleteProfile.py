@@ -12,8 +12,6 @@ def deleteProfile(request, id):
         if not allowed:
             return response
         user = get_user_by_id(id)
-        user.is_active = False
-        user.deleted_at = timezone.now()
-        user.save()
+        user.soft_delete()
         return JsonResponse({'status': 'success', 'redirect_url': '/'})
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
