@@ -14,3 +14,8 @@
 .form-signup {
   display: none;
 }
+
+#external-api-btn {
+  display: block; 
+  margin: 0 auto;
+}
