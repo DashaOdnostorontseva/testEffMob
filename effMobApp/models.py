@@ -18,7 +18,7 @@ class Users(AbstractBaseUser):
     patronymic = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=255, null=True)
-    # last_modified = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
     
@@ -43,6 +43,7 @@ class UserRoles(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
     role = models.ForeignKey(Roles, on_delete=models.CASCADE)
+    last_updated_by = models.ForeignKey(Users, null=True, on_delete=models.SET_NULL, related_name='updated_roles')
 
 class Passwords(models.Model):
     date = models.DateTimeField(auto_now_add=True)
