@@ -64,7 +64,7 @@ def signup(request):
             if auth_user:
                 exist_user.restore()
                 login(request, auth_user)
-                return JsonResponse({'status': 'success', 'message' : 'Account successfully restored', 'redirect_url': f'/profile/{user.id}/'})
+                return JsonResponse({'status': 'success', 'message' : 'Account successfully restored', 'redirect_url': f'/profile/{exist_user.id}/'})
             return JsonResponse({'status': 'error', 'message': 'Incorrect password for existing (inactive) account'})
     
     try:

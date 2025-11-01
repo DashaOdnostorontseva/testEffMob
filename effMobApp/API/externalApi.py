@@ -20,7 +20,7 @@ def external_get_users(request):
     user_role = get_user_role(user)
     
     if ((user_role == None) or 
-        (user_role.id < ROLE_ADMIN_ID)):
+        (user_role.role_id < ROLE_ADMIN_ID)):
         return Response({'status': 'error', 'message': 'Forbidden. Not enough rights for this activity'}, status=403)
 
     users = Users.objects.all()
@@ -42,7 +42,7 @@ def external_update_role(request):
     user_role = get_user_role(user)
 
     if ((user_role == None) or 
-        (user_role.id < ROLE_ADMIN_ID)):
+        (user_role.role_id < ROLE_ADMIN_ID)):
         return Response({'status': 'error', 'message': 'Forbidden. Not enough rights for this activity'}, status=403)
 
     data = request.data
