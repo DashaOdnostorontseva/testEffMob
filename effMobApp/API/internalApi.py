@@ -54,6 +54,7 @@ def update_user_role(request, id):
         return Response({'status': 'error', 'message': 'Invalid role'}, status=400)
 
     target_user = Users.objects.get(id=target_user_id)
-    UserRoles.objects.create(user=target_user, role=new_role)
+    UserRoles.objects.create(user=target_user, role=new_role, created_by=user)
+    target_user.update_last_modified()
 
     return Response({'status': 'success', 'message': f'Role for user {target_user_id} updated to {new_role_type}'})

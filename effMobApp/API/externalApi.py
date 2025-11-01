@@ -59,6 +59,7 @@ def external_update_role(request):
         return Response({'status': 'error', 'message': 'Invalid role'}, status=400)
 
     target_user = Users.objects.get(id=target_user_id)
-    UserRoles.objects.create(user=target_user, role=new_role)
+    UserRoles.objects.create(user=target_user, role=new_role, created_by=user)
+    target_user.update_last_modified()
 
     return Response({'status': 'success', 'message': f'User {target_user_id} role updated to {new_role_type}'})
