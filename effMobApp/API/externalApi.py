@@ -49,7 +49,7 @@ def external_update_role(request):
     target_user_id = data.get('user_id')
     new_role_type = data.get('role_type')
 
-    if ((not (target_user_id) or type(target_user_id) != int) or 
+    if ((not (target_user_id) or type(target_user_id) != str) or 
         (not (new_role_type)) or type(new_role_type) != str):
         return Response({'status': 'error', 'message': 'Invalid data'}, status=400)
 
