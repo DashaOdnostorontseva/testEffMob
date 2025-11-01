@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - backend_network
+    links:
+      - db
+
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: testeffmob
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      PGDATA: /var/lib/postgresql/data/pgdata
+    networks:
+      - backend_network
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
+
+networks:
+  backend_network:
+    driver: bridge
