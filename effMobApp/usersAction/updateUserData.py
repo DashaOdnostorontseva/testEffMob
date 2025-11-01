@@ -34,10 +34,11 @@ def updateProfileData(request, id):
         user = get_user_by_id(id)
     
         data = json.loads(request.body)
-        user.email = data.get('email')
-        user.first_name = data.get('first_name')
-        user.last_name = data.get('last_name')
-        user.patronymic = data.get('patronymic')
+
+        user.update_profile_info(email = data.get('email'),
+                                 first_name = data.get('first_name'),
+                                 last_name = data.get('last_name'),
+                                 patronymic = data.get('patronymic'))
 
         new_password = data.get('password')
         new_password_repeat = data.get('password_repeat')

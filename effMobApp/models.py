@@ -44,6 +44,19 @@ class Users(AbstractBaseUser):
         self.last_modified = timezone.now() 
         self.save()
 
+    def update_profile_info(self, first_name = None, last_name = None, patronymic = None, email = None):
+        if first_name:
+            self.first_name = first_name
+        if last_name:
+            self.last_name = last_name
+        if patronymic:
+            self.patronymic = patronymic
+        if email:
+            self.email = email
+
+        self.last_modified = timezone.now()
+        self.save()
+
 class Roles(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     role_type = models.CharField(max_length=255)
