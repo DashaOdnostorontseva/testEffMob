@@ -18,26 +18,9 @@ def editProfile(request, id):
     user = get_user_by_id(id)
     
     if request.method == 'GET':
-        # отдаём данные профиля в JSON
-        # data = {
-        #     'status': 'success',
-        #     'user': {
-        #         'id': user.id,
-        #         'first_name': user.first_name,
-        #         'last_name': user.last_name,
-        #         'patronymic': user.patronymic,
-        #         'email': user.email
-        #     }
-        # }
-        # return JsonResponse(data)
         return render(request, 'effMobApp/editProfile.html', {'user': user})
 
-
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
-    #     return render(request, 'effMobApp/editProfile.html', {
-    #         'user': user,
-    #     })
-    # return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
 @csrf_exempt
 @login_required
