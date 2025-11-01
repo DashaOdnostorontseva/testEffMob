@@ -40,6 +40,10 @@ class Users(AbstractBaseUser):
         self.is_active = True
         self.save()
 
+    def update_last_modified(self):
+        self.last_modified = timezone.now() 
+        self.save()
+
 class Roles(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     role_type = models.CharField(max_length=255)
