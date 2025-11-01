@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${user.first_name || ''}</td>
             <td>${user.last_name || ''}</td>
             <td>${user.email}</td>
+            <td>${user.is_active}</td>
             <td>
               <select data-user-id="${user.id}">
                 <option value="user" ${user.role_type === 'user' ? 'selected' : ''}>user</option>

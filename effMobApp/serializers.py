@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Users
-        fields = ['id', 'first_name', 'last_name', 'patronymic', 'email', 'role_type', 'role_date']
+        fields = ['id', 'first_name', 'last_name', 'patronymic', 'email', 'is_active', 'role_type', 'role_date']
 
     def get_role_type(self, obj):
         latest = (
