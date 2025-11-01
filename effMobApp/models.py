@@ -34,6 +34,7 @@ class Users(AbstractBaseUser):
     def soft_delete(self):
         self.is_active = False
         self.deleted_at = timezone.now()
+        self.last_modified = timezone.now() 
         self.save()
 
     def restore(self):
