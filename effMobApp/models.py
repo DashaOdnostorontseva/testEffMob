@@ -48,7 +48,7 @@ class UserRoles(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
     role = models.ForeignKey(Roles, on_delete=models.CASCADE)
-    last_updated_by = models.ForeignKey(Users, null=True, on_delete=models.SET_NULL, related_name='updated_roles')
+    created_by = models.ForeignKey(Users, null=True, on_delete=models.SET_NULL, related_name='updated_roles')
 
 class Passwords(models.Model):
     date = models.DateTimeField(auto_now_add=True)
