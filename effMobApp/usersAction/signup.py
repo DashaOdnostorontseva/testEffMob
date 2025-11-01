@@ -29,7 +29,8 @@ def create_user(first_name, last_name, patronymic, email, password):
 
     user_role_entry = UserRoles.objects.create(
         user=user,
-        role=user_role_id
+        role=user_role_id,
+        created_by=user
     )
     user_role_entry.save()
 
